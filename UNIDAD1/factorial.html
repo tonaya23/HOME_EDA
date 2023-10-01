@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Cálculo del Factorial</title>
+</head>
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Cálculo del Factorial</h1>
+                        <p class="card-text">
+                            El cálculo del factorial es una técnica matemática que permite calcular el producto de todos
+                            los números enteros positivos desde 1 hasta un número dado.
+                            Esta página te permite ingresar un número y calcular su factorial.
+                        </p>
+                        <form>
+                            <div class="mb-3">
+                                <label for="numero" class="form-label">Número entero positivo</label>
+                                <input type="text" id="numero" class="form-control" placeholder="Ingrese un número"
+                                    oninput="validarNumero(this)">
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="calcularFactorial()">Calcular
+                                Factorial</button>
+                            <p class="mt-3" id="resultado"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para calcular el factorial
+        function calcularFactorial() {
+            // Obtener el número ingresado del campo de entrada
+            const numero = parseInt(document.getElementById("numero").value);
+            // Obtener el elemento donde se mostrará el resultado
+            const resultado = document.getElementById("resultado");
+
+            // Validar si el número ingresado no es un número válido
+            if (isNaN(numero)) {
+                resultado.textContent = "Por favor, ingresa un número válido.";
+                return;
+            }
+
+            // Calcular el factorial del número utilizando la función factorial recursiva
+            resultado.textContent = `El factorial de ${numero} es ${factorial(numero)}.`;
+        }
+
+        // Función recursiva para calcular el factorial
+        function factorial(n) {
+            // Caso base: si n es 0, el factorial es 1
+            if (n === 0) {
+                return 1;
+            } else {
+                // Caso recursivo: calcular el factorial multiplicando n por el factorial de (n-1)
+                return n * factorial(n - 1);
+            }
+        }
+
+        // Función para validar que se ingrese solo números enteros positivos
+        function validarNumero(input) {
+            const numero = input.value;
+            // Utiliza una expresión regular para verificar si es un número válido
+            if (!/^\d+$/.test(numero)) {
+                // Muestra una alerta y borra el contenido del campo si no es válido
+                alert("Ingrese solo números enteros positivos.");
+                input.value = "";
+            }
+        }
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

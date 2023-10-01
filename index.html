@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <!-- Incluye Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Fondo gris claro de Bootstrap */
+            color: #ffffff; /* Color de texto de Bootstrap */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to top, #444444, #2b3035); 
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        h4 {
+            margin-top: 1rem;
+            color: #ced4da;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .box {
+            background-color: #ffffff; /* Fondo blanco de Bootstrap */
+            padding: 20px;
+            margin-bottom: 25px;
+            margin-top: 20px;
+            border: 1px solid #ced4da; /* Borde gris claro de Bootstrap */
+            transition: transform 0.3s; /* Animación de transformación */
+        }
+
+
+        .box:hover {
+            transform: scale(1.05); /* Escalar el recuadro al pasar el ratón por encima */
+        }
+
+        h2 {
+            color: #343a40; /* Color de encabezado de Bootstrap */
+            font-weight: bold;
+        }
+
+        .button {
+            background-color: #ff4f4f; /* Botón azul de Bootstrap */
+            color: #fff; /* Texto blanco */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: block;
+            margin-top: 10px;
+            transition: background-color 0.3s, color 0.3s; /* Animación de color de fondo y texto */
+        }
+
+        .button:hover {
+            background-color: #d21a1a; /* Color de fondo más oscuro al pasar el ratón */
+            color: #fff; /* Texto blanco cuando se pasa el ratón por encima */
+            text-decoration: none;
+        }
+
+        .box img {
+            width: 100%;
+            max-height: 180px;
+            max-width: 600px;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PRACTICAS EDA</h1>
+        <h4>Pagina principal</h2>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>Unidad I</h2>
+                    <img src="https://cdn.dribbble.com/users/2640235/screenshots/5814118/7_recursion-moustacheman_still_2x.gif?resize=400x300&vertical=center" alt="Imagen de Recursividad">
+                    <a href="UNIDAD1/index.html" class="button">Recursividad</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>Unidad II</h2>
+                    <img src="https://es.javascript.info/article/array/array-speed.svg" alt="Imagen de Arreglos">
+                    <a href="UNIDAD2/index.html" class="button">Arreglos</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>Unidad III</h2>
+                    <img src="https://thumbs.dreamstime.com/b/lista-de-iconos-o-programaci%C3%B3n-listas-y-registro-cat%C3%A1logo-etiquetas-desplazamiento-filas-calendarios-nomenclatura-rollo-259990487.jpg" alt="Imagen de Listas">
+                    <a href="UNIDAD3/index.html" class="button">Listas</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>Unidad IV</h2>
+                    <img src="https://cdn.lynda.com/course/2839030/2839030-1617084953094-16x9.jpg" alt="Imagen de Pilas y Colas">
+                    <a href="UNIDAD4/index.html" class="button">Pilas y Colas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="box">
+                    <h2>Unidad V</h2>
+                    <img src="https://oscarblancarteblog.com/wp-content/uploads/2014/08/arbolvslineal.png" alt="Imagen de Árboles">
+                    <a href="UNIDAD5/index.html" class="button">Árboles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

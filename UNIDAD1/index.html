@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal - Problemas de Recursión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></head>
+    <style>
+       /* Establece el fondo de pantalla en el body */
+       body {
+            background: none;
+        }
+
+        /* Agrega un elemento superpuesto con la imagen de fondo */
+        body::before {
+            content: "";
+            background-image: url('IMG/fondo.jpg'); /* Reemplaza con la ruta de tu imagen */
+            opacity: 0.9; /* Ajusta la opacidad de la imagen de fondo */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Estilos adicionales para el contenido */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Agrega un fondo blanco semitransparente para el contenido */
+            padding: 20px;
+        }
+    </style>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Problemas de Recursión</h1>
+
+        <div class="row">
+
+            <!-- Tarjeta 1 - Cálculo del Factorial -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="IMG/factorial.png" class="card-img-top" alt="Imagen del Factorial">
+                    <div class="card-body">
+                        <h5 class="card-title">Cálculo del Factorial</h5>
+                        <p class="card-text">Calcula el factorial de un número dado utilizando recursión.</p>
+                        <a href="factorial.html" class="btn btn-primary">Ir al Problema</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 - Suma de Números Naturales -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="IMG/suma.png" class="card-img-top" alt="Imagen de la Suma de Números Naturales">
+                    <div class="card-body">
+                        <h5 class="card-title">Suma de Números Naturales</h5>
+                        <p class="card-text">Calcula la suma de los primeros números naturales utilizando recursión.</p>
+                        <a href="suma.html" class="btn btn-primary">Ir al Problema</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 - Serie de Fibonacci -->
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="IMG/fibonacci.png" class="card-img-top" alt="Imagen de la Serie de Fibonacci">
+                    <div class="card-body">
+                        <h5 class="card-title">Serie de Fibonacci</h5>
+                        <p class="card-text">Genera la serie de Fibonacci de una longitud dada utilizando recursión.</p>
+                        <a href="fibonacci.html" class="btn btn-primary">Ir al Problema</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

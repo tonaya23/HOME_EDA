@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arreglos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        #contenedor {
+            max-height: 350px; /* Altura máxima del contenedor */
+            max-width: 200px;
+            overflow-y: auto; /* Agregar una barra de desplazamiento vertical si es necesario */
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 30px auto;
+            text-align: left;
+            font-size: 20px;
+        }
+        #contenedor ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #contenedor li {
+            margin-left: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Arreglos</h1>
+        <div id="contenedor" class="mx-auto">
+            <!-- Aquí se mostrará el arreglo generado -->
+        </div>
+        <div class="text-center mt-3">
+            <button id="generarArreglo" class="btn btn-primary">Generar Arreglo</button>
+            <a href="javascript:history.back()" class="btn btn-secondary">Regresar</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generarArreglo').addEventListener('click', function () {
+            // Generar un arreglo aleatorio de 10 elementos, incluyendo números negativos
+            var arreglo = [];
+            for (var i = 0; i < 10; i++) {
+                var numero = Math.floor(Math.random() * 201) - 100; // Números aleatorios entre -100 y 100
+                var letra = String.fromCharCode(97 + i); // Convertir números a letras del abecedario (a, b, c, ...)
+                arreglo.push(letra + ')   ' + numero);
+            }
+
+            // Mostrar el arreglo en el contenedor como una lista
+            var contenedor = document.getElementById('contenedor');
+            var lista = '<ul>' + arreglo.map(function(item) {
+                return '<li>' + item + '</li>';
+            }).join('') + '</ul>';
+            contenedor.innerHTML = lista;
+            contenedor.style.height = 'auto'; // Restablecer la altura a 'auto'
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
