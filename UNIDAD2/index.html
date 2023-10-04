@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arreglos</title>
+    <title>Generador de Arreglos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         #contenedor {
-            max-height: 350px; /* Altura máxima del contenedor */
+            max-height: 350px;
             max-width: 200px;
-            overflow-y: auto; /* Agregar una barra de desplazamiento vertical si es necesario */
+            overflow-y: auto;
             border: 1px solid #ccc;
             padding: 10px;
             margin: 30px auto;
@@ -27,33 +27,71 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Arreglos</h1>
+        <h1 class="text-center">Generador de Arreglos</h1>
         <div id="contenedor" class="mx-auto">
             <!-- Aquí se mostrará el arreglo generado -->
         </div>
         <div class="text-center mt-3">
             <button id="generarArreglo" class="btn btn-primary">Generar Arreglo</button>
-            <a href="javascript:history.back()" class="btn btn-secondary">Regresar</a>
+            <button id="ordenarArreglo" class="btn btn-info">Ordenar Arreglo</button>
+            <a href="../index.html" class="btn btn-secondary">Regresar</a>
         </div>
     </div>
 
     <script>
-        document.getElementById('generarArreglo').addEventListener('click', function () {
-            // Generar un arreglo aleatorio de 10 elementos, incluyendo números negativos
+        // Función para generar un arreglo aleatorio
+        function generarArreglo() {
             var arreglo = [];
             for (var i = 0; i < 10; i++) {
-                var numero = Math.floor(Math.random() * 201) - 100; // Números aleatorios entre -100 y 100
-                var letra = String.fromCharCode(97 + i); // Convertir números a letras del abecedario (a, b, c, ...)
-                arreglo.push(letra + ')   ' + numero);
+                var numero = Math.floor(Math.random() * 201) - 100;
+                var letra = String.fromCharCode(97 + i);
+                arreglo.push(letra + ') ' + numero);
             }
+            return arreglo;
+        }
 
-            // Mostrar el arreglo en el contenedor como una lista
+        // Función para ordenar un arreglo con el método de Burbuja
+        function ordenarArreglo(arreglo) {
+            var n = arreglo.length;
+            for (var i = 0; i < n - 1; i++) {
+                for (var j = 0; j < n - i - 1; j++) {
+                    // Extraer números de las cadenas
+                    var numero1 = parseInt(arreglo[j].split(') ')[1]);
+                    var numero2 = parseInt(arreglo[j + 1].split(') ')[1]);
+                    if (numero1 > numero2) {
+                        // Intercambiar elementos
+                        var temp = arreglo[j];
+                        arreglo[j] = arreglo[j + 1];
+                        arreglo[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        // Mostrar el arreglo en el contenedor
+        function mostrarArreglo(arreglo) {
             var contenedor = document.getElementById('contenedor');
             var lista = '<ul>' + arreglo.map(function(item) {
                 return '<li>' + item + '</li>';
             }).join('') + '</ul>';
             contenedor.innerHTML = lista;
-            contenedor.style.height = 'auto'; // Restablecer la altura a 'auto'
+            contenedor.style.height = 'auto';
+        }
+
+        // Generar un arreglo al cargar la página
+        var arreglo = generarArreglo();
+        mostrarArreglo(arreglo);
+
+        // Event listener para generar un nuevo arreglo
+        document.getElementById('generarArreglo').addEventListener('click', function () {
+            arreglo = generarArreglo();
+            mostrarArreglo(arreglo);
+        });
+
+        // Event listener para ordenar el arreglo con el método de Burbuja
+        document.getElementById('ordenarArreglo').addEventListener('click', function () {
+            ordenarArreglo(arreglo);
+            mostrarArreglo(arreglo);
         });
     </script>
 
