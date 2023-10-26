@@ -1,240 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador de Arreglos</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      #contenedor {
+        width: 200px;
+        max-height: 350px;
+        max-width: 250px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 30px auto;
+        text-align: left;
+        font-size: 20px;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generador de Arreglos</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <style>
-    #contenedor {
-      width: 200px;
-      max-height: 350px;
-      max-width: 250px;
-      overflow-y: auto;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin: 30px auto;
-      text-align: left;
-      font-size: 20px;
-    }
+      #contenedor ul {
+        list-style-type: none;
+        padding: 0;
+      }
 
-    #contenedor ul {
-      list-style-type: none;
-      padding: 0;
-    }
+      #contenedor li {
+        margin-left: 1em;
+      }
 
-    #contenedor li {
-      margin-left: 1em;
-    }
+      .btn-group,
+      .btn {
+        display: inline;
+      }
 
-    .btn-group,
-    .btn {
-      display: inline;
-    }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+      .card {
+        display: inline-block;
+      }
+    </style>
+  </head>
 
-    .card {
-      display: inline-block;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container mt-5">
-    <div class="text-center">
-      <h1>Generador de Arreglos</h1>
-      <h5>Y Metodos de Ordenamiento</h5>
-    </div>
-    <div id="contenedor" class="mx-auto">
-      <!-- Aquí se mostrará el arreglo generado -->
-    </div>
-    <div class="text-center mt-3">
-      <div class="btn-group" role="group">
-        <button id="generarArreglo" class="btn btn-primary">
-          Generar Arreglo
-        </button>
-        <div class="card mx-3" style="width: fit-content">
-          <div class="card-body">
-            <h5 class="card-title">Métodos de ordenamiento</h5>
-            <div class="btn-group" role="group">
-              <button id="ordenarBurbuja" class="btn btn-info">Burbuja</button>
-              <button id="ordenarShell" class="btn btn-success">Shell</button>
+  <body>
+    <div class="container mt-5">
+      <div class="text-center">
+        <h1>Generador de Arreglos</h1>
+        <h5>Y Metodos de Ordenamiento</h5>
+      </div>
+      <div id="contenedor" class="mx-auto">
+        <!-- Aquí se mostrará el arreglo generado -->
+      </div>
+      <div class="text-center mt-3">
+        <div class="btn-group" role="group">
+          <button id="generarArreglo" class="btn btn-primary">
+            Generar Arreglo
+          </button>
+          <div class="card mx-3" style="width: fit-content">
+            <div class="card-body">
+              <h5 class="card-title">Métodos de ordenamiento</h5>
+              <div class="btn-group" role="group">
+                <button id="ordenarBurbuja" class="btn btn-info">
+                  Burbuja
+                </button>
+                <button id="ordenarShell" class="btn btn-success">Shell</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card mx-3" style="width: fit-content">
-          <div class="card-body">
-            <h5 class="card-title">Métodos de busqueda</h5>
-            <div class="form-group mt-4">
-              <label for="numeroBusqueda">Número a Buscar:</label>
-              <input type="number" class="form-control" id="numeroBusqueda">
+          <div class="card mx-3" style="width: fit-content">
+            <div class="card-body">
+              <h5 class="card-title">Métodos de busqueda</h5>
+              <div class="form-group mt-4">
+                <label for="numeroBusqueda">Número a Buscar:</label>
+                <input type="number" class="form-control" id="numeroBusqueda" />
+              </div>
+              <div class="btn-group" role="group">
+                <button id="busquedaSecuencialBtn" class="btn btn-info mt-2">
+                  Busqueda secuencial
+                </button>
+                <button id="busquedaBinariaBtn" class="btn btn-warning mt-2">
+                  Busqueda binaria
+                </button>
+                <p id="resultadoBusqueda" class="mt-3"></p>
+              </div>
             </div>
-            <div class="btn-group" role="group">
-              <button id="busquedaSecuencialBtn" class="btn btn-info mt-2">Busqueda secuencial</button>
-              <button id="busquedaBinariaBtn" class="btn btn-warning mt-2">Busqueda binaria</button>
-              <p id="resultadoBusqueda" class="mt-3"></p>
-            </div>     
           </div>
+          <a href="../index.html" class="btn btn-secondary">Regresar</a>
         </div>
-        <a href="../index.html" class="btn btn-secondary">Regresar</a>
       </div>
     </div>
-  </div>
 
-  <script>
-    // Función para generar un arreglo aleatorio
-    function generarArreglo() {
-      var arreglo = [];
-      for (var i = 0; i < 10; i++) {
-        var numero = Math.floor(Math.random() * 201) - 100;
-        var letra = String.fromCharCode(97 + i);
-        arreglo.push(letra + ") " + numero);
-      }
-      return arreglo;
-    }
-
-    // Función para ordenar un arreglo con el método de Burbuja
-    function ordenarBurbuja(arreglo) {
-      var n = arreglo.length;
-      for (var i = 0; i < n - 1; i++) {
-        for (var j = 0; j < n - i - 1; j++) {
-          // Extraer números de las cadenas
-          var numero1 = parseInt(arreglo[j].split(") ")[1]);
-          var numero2 = parseInt(arreglo[j + 1].split(") ")[1]);
-          if (numero1 > numero2) {
-            // Intercambiar elementos
-            var temp = arreglo[j];
-            arreglo[j] = arreglo[j + 1];
-            arreglo[j + 1] = temp;
-          }
-        }
-      }
-    }
-
-    function ordenarShell(arreglo) {
-      var n = arreglo.length;
-      for (var gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
-        for (var i = gap; i < n; i += 1) {
-          var temp = arreglo[i];
-          var j;
-          for (
-            j = i;
-            j >= gap &&
-            parseInt(arreglo[j - gap].split(") ")[1]) >
-            parseInt(temp.split(") ")[1]);
-            j -= gap
-          ) {
-            arreglo[j] = arreglo[j - gap];
-          }
-          arreglo[j] = temp;
-        }
-      }
-    }
-    // Mostrar el arreglo en el contenedor
-    function mostrarArreglo(arreglo) {
-      var contenedor = document.getElementById("contenedor");
-      var lista =
-        "<ul>" +
-        arreglo
-          .map(function (item) {
-            return "<li>" + item + "</li>";
-          })
-          .join("") +
-        "</ul>";
-      contenedor.innerHTML = lista;
-      contenedor.style.height = "auto";
-    }
-
-    //Funciones para buscar
-
-    function buscarSecuencial(numero) {
-      for (var i = 0; i < arreglo.length; i++) {
-        if (arreglo[i] === numero) {
-          return i;
-        }
-      }
-      return -1;
-    }
-
-    function buscarBinaria(numero) {
-      var izquierda = 0;
-      var derecha = arreglo.length - 1;
-      while (izquierda <= derecha) {
-        var medio = Math.floor((izquierda + derecha) / 2);
-        if (arreglo[medio] === numero) {
-          return medio;
-        }
-        if (arreglo[medio] < numero) {
-          izquierda = medio + 1;
-        } else {
-          derecha = medio - 1;
-        }
-      }
-      return -1;
-    }
-
-    // Generar un arreglo al cargar la página
-    var arreglo = generarArreglo();
-    mostrarArreglo(arreglo);
-
-    // Event listener para generar un nuevo arreglo
-    document
-      .getElementById("generarArreglo")
-      .addEventListener("click", function () {
-        arreglo = generarArreglo();
-        mostrarArreglo(arreglo);
-      });
-
-    // Event listener para ordenar el arreglo con el método de Burbuja
-    document
-      .getElementById("ordenarBurbuja")
-      .addEventListener("click", function () {
-        ordenarBurbuja(arreglo);
-        mostrarArreglo(arreglo);
-      });
-
-    // Event listener para ordenar el arreglo con el método de Shell
-    document
-      .getElementById("ordenarShell")
-      .addEventListener("click", function () {
-        ordenarShell(arreglo);
-        mostrarArreglo(arreglo);
-      });
-
-    //Parte de busqueda
-
-    document.getElementById("busquedaSecuencialBtn").addEventListener("click", function () {
-      var numeroBusqueda = parseInt(document.getElementById("numeroBusqueda").value, 10);
-      var indice = buscarSecuencial(numeroBusqueda);
-      if (indice !== -1) {
-        document.getElementById("resultadoBusqueda").textContent = "El número " + numeroBusqueda + " se encuentra en la posicion " + indice + ".";
-      } else {
-        document.getElementById("resultadoBusqueda").textContent = "El número " + numeroBusqueda + " no se encuentra en el arreglo.";
-      }
-    });
-
-    document.getElementById("busquedaBinariaBtn").addEventListener("click", function () {
-      var numeroBusqueda = parseInt(document.getElementById("numeroBusqueda").value, 10);
-      ordenarBurbuja();
-      var indice = buscarBinaria(numeroBusqueda);
-      if (indice !== -1) {
-        document.getElementById("resultadoBusqueda").textContent = "El número " + numeroBusqueda + " se encuentra en la posicion " + indice + ".";
-      } else {
-        document.getElementById("resultadoBusqueda").textContent = "El número " + numeroBusqueda + " no se encuentra en el arreglo.";
-      }
-    });
-
-  </script>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+    <script src="scripts/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
