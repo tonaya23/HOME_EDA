@@ -1,103 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generador de Arreglos</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <style>
-      #contenedor {
-        width: 200px;
-        max-height: 350px;
-        max-width: 250px;
-        overflow-y: auto;
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin: 30px auto;
-        text-align: left;
-        font-size: 20px;
-      }
+        #contenedor {
+            width: 200px;
+            max-height: 350px;
+            max-width: 250px;
+            overflow-y: auto;
+            border: 3px solid #d8d8d8;
+            padding: 10px;
+            margin: 30px auto;
+            text-align: left;
+            font-size: 20px;
+        }
 
-      #contenedor ul {
-        list-style-type: none;
-        padding: 0;
-      }
+        #contenedor ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-      #contenedor li {
-        margin-left: 1em;
-      }
+        #contenedor li {
+            margin-left: 1em;
+        }
 
-      .btn-group,
-      .btn {
-        display: inline;
-      }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+        .card {
+            display: inline-block;
+            margin: 10px;
+        }
 
-      .card {
-        display: inline-block;
-      }
+        .btn-group,
+        .btn {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .titulo {
+          margin-bottom: 25px;
+        }
+        #generarArreglo {
+            display: block;
+            margin: 0 auto;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
-    <div class="container mt-5">
-      <div class="text-center">
+<body>
+<div class="container mt-5">
+    <div class="titulo text-center">
         <h1>Generador de Arreglos</h1>
-        <h5>Y Metodos de Ordenamiento</h5>
-      </div>
-      <div id="contenedor" class="mx-auto">
-        <!-- Aquí se mostrará el arreglo generado -->
-      </div>
-      <div class="text-center mt-3">
-        <div class="btn-group" role="group">
-          <button id="generarArreglo" class="btn btn-primary">
-            Generar Arreglo
-          </button>
-          <div class="card mx-3" style="width: fit-content">
-            <div class="card-body">
-              <h5 class="card-title">Métodos de ordenamiento</h5>
-              <div class="btn-group" role="group">
-                <button id="ordenarBurbuja" class="btn btn-info">
-                  Burbuja
-                </button>
-                <button id="ordenarShell" class="btn btn-success">Shell</button>
-              </div>
-            </div>
-          </div>
-          <div class="card mx-3" style="width: fit-content">
-            <div class="card-body">
-              <h5 class="card-title">Métodos de busqueda</h5>
-              <div class="form-group mt-4">
-                <label for="numeroBusqueda">Número a Buscar:</label>
-                <input type="number" class="form-control" id="numeroBusqueda" />
-              </div>
-              <div class="btn-group" role="group">
-                <button id="busquedaSecuencialBtn" class="btn btn-info mt-2">
-                  Busqueda secuencial
-                </button>
-                <button id="busquedaBinariaBtn" class="btn btn-warning mt-2">
-                  Busqueda binaria
-                </button>
-                <p id="resultadoBusqueda" class="mt-3"></p>
-              </div>
-            </div>
-          </div>
-          <a href="../index.html" class="btn btn-secondary">Regresar</a>
-        </div>
-      </div>
+        <h5>Y Métodos de Ordenamiento</h5>
     </div>
+    <button id="generarArreglo" class="btn btn-primary">Generar Arreglo</button>
+    <div id="contenedor" class="mx-auto">
+        <!-- Aquí se mostrará el arreglo generado -->
+    </div>
+    <div class="text-center mt-3">
+        <div class="card" style="width: fit-content">
+            <div class="card-body">
+                <h5 class="card-title">Métodos de ordenamiento</h5>
+                <div class="btn-group" role="group">
+                    <button id="ordenarBurbuja" class="btn btn-info">Burbuja</button>
+                    <button id="ordenarShell" class="btn btn-success">Shell</button>
+                </div>
+            </div>
+        </div>
+        <div class="card" style="width: fit-content">
+            <div class="card-body">
+                <h5 class="card-title">Métodos de búsqueda</h5>
+                <div class="form-group mt-4">
+                    <label for="numeroBusqueda">Número a Buscar:</label>
+                    <input type="number" class="form-control" id="numeroBusqueda" />
+                </div>
+                <div class="btn-group" role="group">
+                    <button id="busquedaSecuencialBtn" class="btn btn-info mt-2">Búsqueda secuencial</button>
+                    <button id="busquedaBinariaBtn" class="btn btn-warning mt-2">Búsqueda binaria</button>
+                    <p id="resultadoBusqueda" class="mt-3"></p>
+                </div>
+            </div>
+        </div>
+        <a href="../index.html" class="btn btn-secondary mt-3">Regresar</a>
+    </div>
+</div>
 
-    <script src="scripts/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
+<script src="scripts/main.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
