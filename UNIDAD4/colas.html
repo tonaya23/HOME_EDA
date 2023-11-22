@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #000000;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .elementos {
+            border: 1px solid #ced4da;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-group-full {
+            display: flex;
+        }
+
+        .btn-group-full .btn {
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Colas</h2>
+        <div class="form-group">
+            <label for="elemento">Elemento a agregar:</label>
+            <input type="text" class="form-control" id="elemento">
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-12 btn-group-full">
+                <button class="btn btn-primary" onclick="agregarElemento()">Agregar</button>
+                <button class="btn btn-danger" onclick="eliminarElemento()">Eliminar</button>
+                <button class="btn btn-warning" onclick="vaciarCola()">Vaciar Cola</button>
+                <button class="btn btn-secondary" onclick="mostrarTotal()">Mostrar Total</button>
+            </div>
+        </div>
+
+        <div class="elementos">
+            <h3>Elementos en la cola:</h3>
+            <ul id="cola" class="list-group">
+                <!-- Aquí se mostrarán los elementos en la cola -->
+            </ul>
+        </div>
+        <div class="text-right mt-3">
+            <p>Total de elementos: <span id="totalElementos">0</span></p>
+        </div>
+        <div class="text-left mt-3">
+            <a href="index.html" class="btn btn-dark">Regresar</a>
+        </div>             
+    </div>
+    <script>
+        let cola = []; // La cola vacía
+
+        function agregarElemento() {
+            const elemento = document.getElementById("elemento").value;
+            if (elemento !== "") {
+                cola.push(elemento);
+                mostrarCola();
+                document.getElementById("elemento").value = ""; // Limpiar la casilla
+            }
+        }
+
+        function mostrarCola() {
+            const colaElementos = document.getElementById("cola");
+            colaElementos.innerHTML = "";
+            cola.forEach(elemento => {
+                const li = document.createElement("li");
+                li.className = "list-group-item";
+                li.appendChild(document.createTextNode(elemento));
+                colaElementos.appendChild(li);
+            });
+            document.getElementById("totalElementos").innerText = cola.length;
+        }
+
+        function eliminarElemento() {
+            cola.shift(); // Elimina el primer elemento de la cola
+            mostrarCola();
+        }
+
+        function vaciarCola() {
+            cola = []; // Vacía la cola
+            mostrarCola();
+        }
+
+        function mostrarTotal() {
+            alert(`Total de elementos en la cola: ${cola.length}`);
+        }
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
