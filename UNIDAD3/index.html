@@ -64,7 +64,7 @@
     <label for="nombre2" class="mt-3">Elementos:</label> 
     <input type="text" class="form-select" id="nombre2">
 </input>
-    <button type="button" class="btn btn-primary d-block mx-auto mt-4" onclick="agregarNombre(dato1.value, 'nombres', document.getElementById('posicion').value)">Agregar Elemento</button> <!-- Modificado el onclick -->
+    <button type="button" class="btn   btn-primary d-block mx-auto mt-4" onclick="agregarNombre(dato1.value, 'nombres', document.getElementById('posicion').value)">Agregar Elemento</button> <!-- Modificado el onclick -->
   </div>
   <div class="mt-4">
     <h4>Elementos Agregados:</h4>
@@ -79,7 +79,11 @@
       <button type="button" class="btn btn-warning" onclick="eliminarPrimero('nombres')">Eliminar Primero</button>
       <button type="button" class="btn btn-secondary" onclick="eliminarUltimoAgregado('nombres')">Eliminar Último</button>
   </div>
-  <a href="../index.html" class="btn btn-outline-danger mt-3">Regresar</a>
+  <div class="btn-group">
+    <button type="button" class="btn btn-outline-danger" onclick="borrarTodos()">Borrar Todos</button>
+    <button type="button" class="btn btn-outline-danger" onclick="vaciarCasillas()">Vaciar Casillas</button>
+  </div>
+  <a href="../index.html" class="btn btn-outline-primary mt-3">Regresar</a>
 </div>
 <script src="script.js"></script> 
 </body>
