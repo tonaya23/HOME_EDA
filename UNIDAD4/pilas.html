@@ -1,112 +1,141 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pilas</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            background-color: #f8f9fa;
-            color: #000000;
-            font-family: Arial, sans-serif;
-            padding-top: 50px;
-        }
+      body {
+        background-color: #f8f9fa;
+        color: #000000;
+        font-family: Arial, sans-serif;
+        padding-top: 50px;
+      }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
 
-        .elementos {
-            border: 1px solid #ced4da;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
+      .elementos {
+        border: 1px solid #ced4da;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
 
-        .btn-group-full {
-            display: flex;
-        }
+      .btn-group-full {
+        display: flex;
+      }
 
-        .btn-group-full .btn {
-            flex-grow: 1;
-            margin-right: 5px;
-        }
+      .btn-group-full .btn {
+        flex-grow: 1;
+        margin-right: 5px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <h2 class="text-center mb-4">Pilas</h2>
-        <div class="form-group">
-            <label for="elemento">Elemento a agregar:</label>
-            <input type="text" class="form-control" id="elemento">
-        </div>
+      <h2 class="text-center mb-4">Pilas</h2>
+      <div class="form-group">
+        <label for="elemento">Elemento a agregar:</label>
+        <input type="text" class="form-control" id="elemento" />
+      </div>
 
-        <div class="row mb-3">
-            <div class="col-md-12 btn-group-full">
-                <button class="btn btn-primary" onclick="agregarElemento()">Agregar</button>
-                <button class="btn btn-danger" onclick="eliminarElemento()">Eliminar</button>
-                <button class="btn btn-warning" onclick="vaciarPila()">Vaciar Pila</button>
-                <button class="btn btn-secondary" onclick="mostrarTotal()">Mostrar Total</button>
-            </div>
+      <div class="row mb-3">
+        <div class="col-md-12 btn-group-full">
+          <button class="btn btn-primary" onclick="agregarElemento()">
+            Agregar
+          </button>
+          <button class="btn btn-danger" onclick="eliminarElemento()">
+            Eliminar
+          </button>
+          <button class="btn btn-warning" onclick="vaciarPila()">
+            Vaciar Pila
+          </button>
+          <button class="btn btn-secondary" onclick="mostrarTotal()">
+            Mostrar Total
+          </button>
         </div>
+      </div>
 
-        <div class="elementos">
-            <h3>Elementos en la pila:</h3>
-            <ul id="pila" class="list-group">
-                <!-- Aquí se mostrarán los elementos agregados -->
-            </ul>
-        </div>
-        <div class="text-right mt-3">
-            <p>Total de elementos: <span id="totalElementos">0</span></p>
-        </div>
-        <div class="text-left mt-3">
-            <a href="index.html" class="btn btn-dark">Regresar</a>
-        </div>
+      <div class="elementos">
+        <h3>Elementos en la pila:</h3>
+        <ul id="pila" class="list-group">
+          <!-- Aquí se mostrarán los elementos agregados -->
+        </ul>
+      </div>
+      <div class="text-right mt-3">
+        <p>Total de elementos: <span id="totalElementos">0</span></p>
+      </div>
+      <div class="text-left mt-3">
+        <a href="index.html" class="btn btn-dark">Regresar</a>
+      </div>
     </div>
-
     <script>
-        let pila = []; // La pila vacía
+      let pila = []; // La pila vacía
 
-        function agregarElemento() {
-            const elemento = document.getElementById("elemento").value;
-            if (elemento !== "") {
-                pila.push(elemento);
-                mostrarPila();
-                document.getElementById("elemento").value = ""; // Limpiar la casilla
-            }
+      function agregarElemento() {
+        const elemento = document.getElementById("elemento").value.trim();
+        if (elemento !== "") {
+          pila.push(elemento);
+          mostrarPila();
+          document.getElementById("elemento").value = ""; // Limpiar la casilla
+        } else {
+          alert("Ingresa un elemento válido");
         }
+      }
 
-        function mostrarPila() {
-            const pilaElementos = document.getElementById("pila");
-            pilaElementos.innerHTML = "";
-            pila.forEach(elemento => {
-                const li = document.createElement("li");
-                li.className = "list-group-item";
-                li.appendChild(document.createTextNode(elemento));
-                pilaElementos.appendChild(li);
-            });
-            document.getElementById("totalElementos").innerText = pila.length;
-        }
+      function mostrarPila() {
+        const pilaElementos = document.getElementById("pila");
+        pilaElementos.innerHTML = "";
+        pila.forEach((elemento) => {
+          const li = document.createElement("li");
+          li.className = "list-group-item";
+          li.appendChild(document.createTextNode(elemento));
+          pilaElementos.appendChild(li);
+        });
+        document.getElementById("totalElementos").innerText = pila.length;
+      }
 
-        function eliminarElemento() {
-            pila.pop(); // Elimina el último elemento agregado
-            mostrarPila();
+      function eliminarElemento() {
+        if (pila.length > 0) {
+          pila.pop(); // Elimina el último elemento agregado
+          mostrarPila();
+        } else {
+          alert("La pila está vacía");
         }
+      }
 
-        function vaciarPila() {
-            pila = []; // Vacía la pila
-            mostrarPila();
+      function vaciarPila() {
+        if (pila.length > 0) {
+          pila = []; // Vacía la pila
+          mostrarPila();
+        } else {
+          alert("La pila está vacía");
         }
+      }
 
-        function mostrarTotal() {
-            alert(`Total de elementos en la pila: ${pila.length}`);
+      function mostrarTotal() {
+        alert(`Total de elementos en la pila: ${pila.length}`);
+      }
+
+      function manejarEnterPila(event) {
+        if (event.key === "Enter") {
+          agregarElemento();
         }
+      }
+
+      // Asocia la función manejarEnterPila al evento keypress en el campo de texto
+      document
+        .getElementById("elemento")
+        .addEventListener("keypress", manejarEnterPila);
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>
