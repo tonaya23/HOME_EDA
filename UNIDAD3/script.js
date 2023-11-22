@@ -96,13 +96,12 @@ function eliminarNombre(idTabla) {
       return; // Termina la función después de eliminar la primera coincidencia
     }
   }
-
   alert('Nombre no encontrado');
 }
 
 
 function cerrarSesion() {
-window.location.href = 'ruta_index';
+  window.location.href = 'ruta_index';
 }
 
 function cerrarSesion() {
